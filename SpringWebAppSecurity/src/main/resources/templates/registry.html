@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8"/>
+	<title>Insert title here</title>
+	<style type="text/css">
+	
+		label {
+			font-style: bold;
+			size: 30px;
+		}
+		h1, .form{
+			margin: auto;
+			width: 50%;
+		}
+		
+	</style>
+	</head>
+	<body>
+	<h1>This is registration Page</h1>
+	<div class="form">
+	<form method="post" th:object="${user}">
+		<div th:if= "${#fields.hasErrors('*')}">
+		  <p th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
+		 </div>
+		<label>User Name</label><input type="text" th:field="*{userName}"/><br/>
+		<label>Password</label><input type="password" th:field="*{password}"/><br/>
+		<label>E-mail</label><input type="email" th:field="*{email}"/><br/>
+		<input type="submit" value="register!"/>
+	</form>
+	</div>
+	</body>
+</html>
